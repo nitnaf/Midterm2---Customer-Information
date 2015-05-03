@@ -18,12 +18,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 
-public class Controller{
-	
+public class Controller implements Initializable {
+
 	@FXML
 	private TextField firstName;
 	@FXML
-	private TextField middleInt;	
+	private TextField middleInt;
 	@FXML
 	private TextField lastName;
 	@FXML
@@ -31,13 +31,13 @@ public class Controller{
 	@FXML
 	private RadioButton female;
 	@FXML
-	private TextField address;	
+	private TextField address;
 	@FXML
-	private TextField city; 
+	private TextField city;
 	@FXML
 	private ComboBox state;
 	@FXML
-	private TextField zip;	
+	private TextField zip;
 	@FXML
 	private Button save;
 	@FXML
@@ -45,40 +45,46 @@ public class Controller{
 	@FXML
 	private ToggleGroup gender;
 	@FXML
-	ArrayList<Customer> listOfCustomers = new ArrayList <Customer>();
+	ArrayList<Customer> listOfCustomers = new ArrayList<Customer>();
 	@FXML
 	private Main main;
-	
-	ObservableList<String> options = 
-		    FXCollections.observableArrayList(
-		        "Option 1",
-		        "Option 2",
-		        "Option 3"
-		    );
-	
-	public void loadBox(){
+
+	public void initialize(URL url, ResourceBundle rb) {
+
+		loadBox();
+	}
+
+	public void loadBox() {
+		
+		ObservableList<String> options = 
+			    FXCollections.observableArrayList(
+			        "PA",
+			        "DE",
+			        "NY");
+		
 		state.setItems(options);
 	}
-	
+
 	@FXML
-	private void pressSave(){
+	private void pressSave() {
 		Customer x = new Customer();
-		
+
 		x.setFirstName(firstName.getText());
 		x.setMiddileInt(middleInt.getText());
 		x.setLastName(lastName.getText());
 		// setGender
 		x.setAddress(address.getText());
 		x.setCity(city.getText());
-		//x.setState(state.getValue().toString());
-		x.setZip(Byte.parseByte(zip.getText()));
-		
+		x.setState(state.getValue().toString());
+		x.setZip(zip.getText());
+
 		listOfCustomers.add(x);
+		System.out.println(listOfCustomers.toString());
 	}
-	
+
 	@FXML
-	private void pressClear(){
-		
+	private void pressClear() {
+
 		firstName.clear();
 		middleInt.clear();
 		lastName.clear();
@@ -86,12 +92,9 @@ public class Controller{
 		// Reset Female button
 		address.clear();
 		city.clear();
-		// Reset ComboBox
+		// Reset Combo Box
 		zip.clear();
-		
-		
-		
-	}
-	
-}
 
+	}
+
+}

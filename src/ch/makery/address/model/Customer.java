@@ -9,7 +9,7 @@ public class Customer {
 	private String address;
 	private String city;
 	private String state;
-	private byte zip;
+	private String zip;
 	
 	public Customer(){
 		
@@ -49,7 +49,7 @@ public class Customer {
 	public String getState() {
 		return state;
 	}
-	public byte getZip() {
+	public String getZip() {
 		return zip;
 	}
 	
@@ -74,7 +74,7 @@ public class Customer {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public void setZip(byte zip) {
+	public void setZip(String zip) {
 		this.zip = zip;
 	}
 	
